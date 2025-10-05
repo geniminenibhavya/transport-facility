@@ -1,0 +1,23 @@
+<label for="employeeId">Your Employee ID:</label>
+<input id="employeeId" [(ngModel)]="bookingEmployeeId" name="bookingEmployeeId" required />
+
+<label for="vehicleType">Filter by Vehicle Type:</label>
+<select id="vehicleType" [(ngModel)]="selectedVehicleType">
+  <option value="">All</option>
+  <option value="Car">Car</option>
+  <option value="Bike">Bike</option>
+</select>
+
+<label for="filterTime">Filter by Time:</label>
+<input id="filterTime" type="datetime-local" [(ngModel)]="selectedTime" name="selectedTime" />
+
+<button (click)="filterRides(selectedTime, selectedVehicleType)">Filter</button>
+
+<div *ngFor="let ride of filteredRides" role="listitem">
+  <p>
+    {{ ride.vehicleType }} | {{ ride.vehicleNo }}<br>
+    From {{ ride.pickupPoint }} to {{ ride.destination }}<br>
+    Time: {{ ride.time }} | Vacant Seats: {{ ride.vacantSeats }}
+  </p>
+  <button (click)="bookRide(ride, bookingEmployeeId)" [disabled]="ride.vacantSeats === 0 || !bookingEmployeeId" aria-label="Book ride">Book Ride</button>
+</div>

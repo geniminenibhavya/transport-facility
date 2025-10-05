@@ -1,0 +1,14 @@
+<label for="filter">Filter by Vehicle Type</label>
+<select id="filter" [(ngModel)]="vehicleType">
+  <option value="">All</option>
+  <option value="Car">Car</option>
+  <option value="Bike">Bike</option>
+</select>
+<label for="searchTime">Time</label>
+<input id="searchTime" type="datetime-local" [(ngModel)]="searchTime" />
+
+<button (click)="search()">Search</button>
+
+<div *ngFor="let ride of rides">
+  <p>{{ ride.vehicleType }} - {{ ride.pickupPoint }} → {{ ride.destination }}</p>
+</div>

@@ -1,0 +1,28 @@
+<form (ngSubmit)="addRide()" aria-label="Add a new ride">
+  <label for="empId">Employee ID</label>
+  <input id="empId" [(ngModel)]="ride.employeeId" name="employeeId" required aria-required="true" />
+
+  <label for="vehicleType">Vehicle Type</label>
+  <select id="vehicleType" [(ngModel)]="ride.vehicleType" name="vehicleType" aria-label="Select vehicle type">
+    <option value="Car">Car</option>
+    <option value="Bike">Bike</option>
+  </select>
+
+  <label for="vehicleNo">Vehicle Number</label>
+  <input id="vehicleNo" [(ngModel)]="ride.vehicleNo" name="vehicleNo" required aria-required="true" />
+
+  <label for="seats">Vacant Seats</label>
+  <input id="seats" type="number" [(ngModel)]="ride.vacantSeats" name="vacantSeats" min="1" aria-label="Vacant seats"/>
+
+  <label for="time">Time</label>
+  <input id="time" type="datetime-local" [(ngModel)]="ride.time" name="time" required />
+
+  <label for="pickup">Pickup Point</label>
+  <input id="pickup" [(ngModel)]="ride.pickupPoint" name="pickupPoint" required />
+
+  <label for="destination">Destination</label>
+  <input id="destination" [(ngModel)]="ride.destination" name="destination" required />
+
+  <button type="submit" aria-label="Add ride">Add Ride</button>
+</form>
+
